@@ -1,0 +1,33 @@
+<h1>Edit Job</h1>
+
+<% if @job.errors.any? %>
+  <ul>
+    <% @job.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @job, local: true do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div>
+    <%= f.label :status %>
+    <%= f.select :status, Job.statuses.keys %>
+  </div>
+
+  <%= f.submit "Update Job" %>
+<% end %>

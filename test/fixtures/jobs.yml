@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_code: MyString
+  title: MyString
+  description: MyText
+  location: MyString
+  status: 1
+  created_by_id: 1
+
+two:
+  job_code: MyString
+  title: MyString
+  description: MyText
+  location: MyString
+  status: 1
+  created_by_id: 1

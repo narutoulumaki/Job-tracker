@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  application: one
+  remind_at: 2026-02-18 12:08:20
+  message: MyString
+  is_sent: false
+
+two:
+  application: two
+  remind_at: 2026-02-18 12:08:20
+  message: MyString
+  is_sent: false

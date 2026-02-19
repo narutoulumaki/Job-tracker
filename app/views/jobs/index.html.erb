@@ -1,0 +1,19 @@
+<h1>Jobs</h1>
+
+<% @jobs.each do |job| %>
+  <div>
+    <h3><%= job.title %></h3>
+    <p><%= job.description %></p>
+    <p>Status: <%= job.status %></p>
+
+
+<% if current_user.candidate? && job.open? %>
+  <%= link_to "Apply", new_job_job_application_path(job) %>
+<% end %>
+
+  </div>
+<% end %>
+
+<% if current_user.admin? || current_user.staff? %>
+  <%= link_to "New Job", new_job_path %>
+<% end %>

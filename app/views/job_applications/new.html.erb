@@ -1,0 +1,18 @@
+<h1>Apply for <%= @job.title %></h1>
+
+<% if @job_application.errors.any? %>
+  <ul>
+    <% @job_application.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: [@job, @job_application] do |f| %>
+    <div>
+        <%= f.label :cover_letter %>
+        <%= f.text_area :cover_letter %>
+    </div>
+
+    <%= f.submit "Submit Application" %>
+<% end %>

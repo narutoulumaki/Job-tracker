@@ -1,0 +1,27 @@
+<h2> Application Details </h2>
+
+    <p>Job: <%= @job_application.job.title %></p>
+    <p>Candidate: <%= @job_application.candidate.first_name %> <%= @job_application.candidate.last_name %></p>
+    <p>Status: <%= @job_application.status %></p>
+
+<% if current_user.admin? || current_user.staff? %>
+    <%= button_to "Delete Application", job_application_path(@job_application), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<% end %>
+
+<% if current_user.admin? || current_user.staff? %>
+        <h3> Internal Notes </h3>
+
+        <% @job_application.notes.each do |note| %>
+            <div>
+                <p><%= note.content %></p>
+                <p>By: <%= note.created_by.email %> </p>
+                <%= button_to "Delete", job_application_note_path(@job_application, note), method: :delete %>
+            </div>
+        <% end %>
+
+    <h4> Add Note </h4>
+    <%= form_with model: [@job_application, Note.new], local: true do |f| %>
+        <%= f.text_area :content %>
+        <%= f.submit "Add Note" %>
+    <% end %>
+<% end %>
