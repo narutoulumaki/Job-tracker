@@ -35,6 +35,14 @@ class JobApplicationsController < ApplicationController
         @job_application.candidate_id = current_user.id
         @job_application.status = :applied
 
+        current_user.update(
+            first_name: params[:job_application][:candidate_first_name],
+            last_name: params[:job_application][:candidate_last_name],
+            phone: params[:job_application][:candidate_phone],
+            address: params[:job_application][:candidate_address],
+            dob: params[:job_application][:candidate_dob]
+        )
+
         if @job_application.save
             redirect_to @job_application, notice: "Application was successfully submitted."
         else

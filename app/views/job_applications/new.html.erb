@@ -8,7 +8,46 @@
   </ul>
 <% end %>
 
+<h3>Your Details</h3>
+
 <%= form_with model: [@job, @job_application] do |f| %>
+    <div>
+        <%= f.label :"candidate_first_name", "First Name" %>
+        <%= f.text_field :candidate_first_name, value: current_user.first_name %>
+    </div>
+
+    <div>
+        <%= f.label :"candidate_last_name", "Last Name" %>
+        <%= f.text_field :candidate_last_name, value: current_user.last_name %>
+    </div>
+
+    <div>
+        <label>Email</label>
+        <p><%= current_user.email %></p>
+    </div>
+
+    <div>
+        <%= f.label :"candidate_phone", "Phone" %>
+        <%= f.text_field :candidate_phone, value: current_user.phone %>
+    </div>
+
+    <div>
+        <%= f.label :"candidate_address", "Address" %>
+        <%= f.text_area :candidate_address, value: current_user.address %>
+    </div>
+
+    <div>
+        <%= f.label :"candidate_dob", "Date of Birth" %>
+        <%= f.date_field :candidate_dob, value: current_user.dob %>
+    </div>
+
+    <hr>
+
+    <div>
+        <%= f.label :resume, "Resume (URL or file path)" %>
+        <%= f.text_field :resume %>
+    </div>
+
     <div>
         <%= f.label :cover_letter %>
         <%= f.text_area :cover_letter %>

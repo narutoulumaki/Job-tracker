@@ -2,16 +2,21 @@
 
 <% @jobs.each do |job| %>
   <div>
-    <h3><%= job.title %></h3>
+    <h3><%= link_to job.title, job_path(job) %></h3>
     <p><%= job.description %></p>
     <p>Status: <%= job.status %></p>
 
+    <%= link_to "View", job_path(job) %>
 
-<% if current_user.candidate? && job.open? %>
-  <%= link_to "Apply", new_job_job_application_path(job) %>
-<% end %>
+    <% if current_user.admin? || current_user.staff? %>
+      <%= link_to "Edit", edit_job_path(job) %>
+    <% end %>
 
+    <% if current_user.candidate? && job.open? %>
+      <%= link_to "Apply", new_job_job_application_path(job) %>
+    <% end %>
   </div>
+  <hr>
 <% end %>
 
 <% if current_user.admin? || current_user.staff? %>

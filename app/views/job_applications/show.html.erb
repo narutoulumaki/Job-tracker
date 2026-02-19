@@ -2,7 +2,13 @@
 
     <p>Job: <%= @job_application.job.title %></p>
     <p>Candidate: <%= @job_application.candidate.first_name %> <%= @job_application.candidate.last_name %></p>
+    <p>Email: <%= @job_application.candidate.email %></p>
+    <p>Phone: <%= @job_application.candidate.phone || 'Not provided' %></p>
+    <p>Address: <%= @job_application.candidate.address || 'Not provided' %></p>
+    <p>Date of Birth: <%= @job_application.candidate.dob || 'Not provided' %></p>
     <p>Status: <%= @job_application.status %></p>
+    <p>Resume: <%= @job_application.resume || 'Not provided' %></p>
+    <p>Cover Letter: <%= @job_application.cover_letter || 'Not provided' %></p>
 
 <% if current_user.admin? || current_user.staff? %>
     <%= button_to "Delete Application", job_application_path(@job_application), method: :delete, data: { turbo_confirm: "Are you sure?" } %>

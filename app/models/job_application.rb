@@ -7,11 +7,12 @@ class JobApplication < ApplicationRecord
     hired: 4,
     rejected: 5
   }
-validate :job_must_be_open, on: :create
+  validates :candidate_id, uniqueness: { scope: :job_id, message: "You have already applied to this job" }
+  validate :job_must_be_open, on: :create
 
-def job_must_be_open
-  errors.add(:base, "Job is closed") unless job.open?
-end
+  def job_must_be_open
+    errors.add(:base, "Job is closed") unless job.open?
+  end
 
   belongs_to :job
   belongs_to :candidate, class_name: "User"
