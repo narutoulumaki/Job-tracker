@@ -1,0 +1,11 @@
+<h2>Reminder</h2>
+
+<p><strong>Job:</strong> <%= @job.title %></p>
+
+<p><strong>Candidate:</strong>
+  <%= @candidate.first_name %> <%= @candidate.last_name %>
+</p>
+
+<p><strong>Message:</strong> <%= @reminder.message %></p>
+
+<p><strong>Scheduled At:</strong> <%= @reminder.remind_at %></p>

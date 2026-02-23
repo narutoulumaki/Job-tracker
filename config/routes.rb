@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "reminders/create"
+  get "reminders/destroy"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :job_applications do
    resources :notes, only: [:create, :destroy]
+   resources :reminders, only: [:create, :destroy]
   end
 
   root "jobs#index"

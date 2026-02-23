@@ -7,6 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+puts "Seeding jobs..."
+
+admin = User.find_by(email: "admin@company.com")
+candidate = User.find_by(email: "candidate@company.com")
+
 User.find_or_create_by!(email: "admin@company.com") do |u|
   u.password = "password"
   u.role = :admin
@@ -26,4 +31,15 @@ User.find_or_create_by!(email: "candidate@company.com") do |u|
   u.role = :candidate
   u.first_name = "Candidate"
   u.last_name = "User"
+end
+
+job = Job.find_or_create_by!(title: "Software Engineer") do |j|
+  j.description = "Build cool stuff"
+  j.location = "Bangalore"
+  j.status = :open
+  j.created_by = admin
+end
+
+JobApplication.find_or_create_by!(candidate: candidate, job: job) do |a|
+  a.status = :applied
 end
