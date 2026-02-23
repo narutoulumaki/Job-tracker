@@ -57,13 +57,16 @@ config.active_job.queue_adapter = :async
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-config.action_mailer.default_url_options = { host: "job-tracker-2-ftkt.onrender.com/" }
+config.action_mailer.default_url_options = {
+  host: ENV["APP_HOST"],
+  protocol: "https"
+}
 
 config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
-  port: 587,
+  port: 465,
   domain: "gmail.com",
   user_name: ENV["SMTP_USERNAME"],
   password: ENV["SMTP_PASSWORD"],
