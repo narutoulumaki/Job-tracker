@@ -73,6 +73,9 @@ config.action_mailer.smtp_settings = {
   authentication: :plain,
   enable_starttls_auto: true
 }
+puts "SENDGRID KEY PRESENT? #{ENV['SENDGRID_API_KEY'].present?}"
+puts "APP_HOST: #{ENV['APP_HOST']}"
+
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via bin/rails credentials:edit.
   # config.action_mailer.smtp_settings = {
